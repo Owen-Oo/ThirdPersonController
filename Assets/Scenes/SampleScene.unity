@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 2122316373}
-  speed: 2
+  speed: 5
   freeLookCamera: {fileID: 1800657358}
 --- !u!1 &832575517
 GameObject:

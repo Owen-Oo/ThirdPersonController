@@ -11,13 +11,15 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        playerRB = GetComponent<Rigidbody>();
+
         inputManager.OnMove.AddListener(MovePlayer);
         inputManager.OnSpacePressed.AddListener(Jump);
-        playerRB = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
+        //Rotates the player to match the direction of the camera
         transform.forward = freeLookCamera.transform.forward;
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer(Vector2 direction)
     {
         Vector3 moveDirection = new(direction.x, 0f, direction.y);
-        playerRB.AddForce(moveDirection * speed);
+        playerRB.linearVelocity = transform.rotation * moveDirection * speed;
     }
 
     private void Jump()
