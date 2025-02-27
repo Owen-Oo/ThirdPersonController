@@ -42,7 +42,16 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 jumpDirection = new(0f, 1f, 0f);
             playerRB.AddForce(jumpDirection * jumpHeight);
-            //canJump = false;
+            canJump = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            //Debug.Log("Ground");
+            canJump=true;
         }
     }
 }
