@@ -1,15 +1,17 @@
+using TMPro;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private int score;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private static GameObject[] coins;
 
     void Start()
     {
         score = 0;
-        Debug.Log(score.ToString());
+        scoreText.SetText("Score: " +  score);
 
         coins = GameObject.FindGameObjectsWithTag("Coin");
         foreach (GameObject coin in coins)
@@ -19,14 +21,9 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        
-    }
-
     private void increaseScore()
     {
         score++;
-        Debug.Log(score.ToString());
+        scoreText.SetText("Score: " + score);
     }
 }
